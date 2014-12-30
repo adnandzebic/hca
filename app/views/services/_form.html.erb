@@ -1,0 +1,35 @@
+<%= form_for @service do |f| %>
+
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@service.errors.count, "error") %> prohibited
+        this service from being saved:
+      </h2>
+      <ul>
+        <% @service.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :service_date %><br>
+    <%= f.datetime_select :service_date %>
+  </p>
+
+  <p>
+    <%= f.label :client_id %><br>
+    <%= f.collection_select :client_id, @clients, :id, :first_name %>
+  </p>
+
+  <p>
+    <%= f.label :employee_id %><br>
+    <%= f.collection_select :employee_id, @employees, :id, :first_name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

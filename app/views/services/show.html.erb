@@ -1,0 +1,17 @@
+<p>
+  <strong>Service date:</strong>
+  <%= @service.service_date %>
+</p>
+
+<p>
+  <strong>Client name:</strong>
+  <%= @clients.find(@service.client_id).first_name %>
+</p>
+
+<p>
+  <strong>Employee name:</strong>
+  <%= @employees.find(@service.employee_id).first_name %>
+</p>
+
+<%= link_to 'Back', services_path %>
+<%= link_to 'Edit', edit_service_path(@service) %>
