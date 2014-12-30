@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount FullcalendarEngine::Engine => "/calendar"
   get 'calendar/index'
 
   resources :clients

@@ -26,8 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'jquery-turbolinks'
 gem 'momentjs-rails'
 gem 'responders', '~> 2.0'
-gem 'fullcalendar-rails'
 
+gem 'fullcalendar_engine'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
