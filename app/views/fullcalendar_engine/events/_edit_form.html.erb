@@ -9,6 +9,15 @@
   <br/>
   <%=f.text_area :description, :rows => 4, :cols => 30 %>
 </p>
+  <p>
+    <%= f.label :client_id %><br>
+    <%= f.collection_select :client_id, @clients, :id, :first_name %>
+  </p>
+
+  <p>
+    <%= f.label :employee_id %><br>
+    <%= f.collection_select :employee_id, @employees, :id, :first_name %>
+  </p>
 <p>
   <%=f.label :starttime, 'Start Time' %>
   <br/>

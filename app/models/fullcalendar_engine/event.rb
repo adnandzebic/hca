@@ -1,12 +1,17 @@
 module FullcalendarEngine
   class Event < ActiveRecord::Base
 
-    attr_accessor :period, :frequency, :commit_button
+    attr_accessor :period, :frequency, :commit_button, :customer_id, :staffmember_id
 
     validates :title, :description, :presence => true
     validate :validate_timings
 
     belongs_to :event_series
+    belongs_to :customer, class_name: "Client"
+    belongs_to :staffmember, class_name: "Employee"
+
+    before_save :set_customer
+    before_save :set_staffmember
 
     REPEATS = {
       :no_repeat => "Does not repeat",
@@ -52,5 +57,13 @@ module FullcalendarEngine
       def make_date_time(original_time, difference_time, event_time = nil)
         DateTime.parse("#{original_time.hour}:#{original_time.min}:#{original_time.sec}, #{event_time.try(:day) || difference_time.day}-#{difference_time.month}-#{difference_time.year}")
       end 
+
+      def set_customer
+        self.customer = Client.find_or_create_by(id: customer_id)
+      end
+
+      def set_staffmember
+        self.staffmember = Client.find_or_create_by(id: staffmember)
+      end
   end
 end
